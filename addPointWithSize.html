@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart.js Point Size Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div>
+        <label for="pointSizeInput">Point Size:</label>
+        <input type="number" id="pointSizeInput" min="1" max="10" step="1" value="5">
+        <button onclick="addPoint()">Add Point</button>
+    </div>
+    <canvas id="myChart" width="400" height="400"></canvas>
+
+    <script>
+        let chartData = {
+            labels: ['A', 'B', 'C', 'D', 'E'],
+            datasets: [{
+                label: 'Data',
+                data: [12, 19, 3, 5, 2],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                pointRadius: 10, // Default point size
+                pointHoverRadius: 8 // Default hover point size
+            }]
+        };
+
+        let chartOptions = {
+            responsive: false,
+            
+            onClick: (e) => {
+                const canvasPosition = Chart.helpers.getRelativePosition(e, scatterPlot);
+
+                var xPos = scatterPlot.scales["x-axis-1"].getValueForPixel(canvasPosition.x)
+                var yPos = scatterPlot.scales["y-axis-1"].getValueForPixel(canvasPosition.y)
+
+                console.log("xPos: " + xPos)
+                console.log("yPos: " + yPos)
+            },
+
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        let myChart = new Chart(document.getElementById('myChart'), {
+            type: 'line',
+            data: chartData,
+            options: chartOptions
+        });
+
+        function addPoint() {
+            console.log("add point")
+            let pointSize = parseInt(document.getElementById('pointSizeInput').value);
+
+            myChart.data.datasets[0].data.push(Math.floor(Math.random() * 20)); // Example random data
+            myChart.data.datasets[0].pointRadius.push(pointSize);
+
+            myChart.update();
+        }
+    </script>
+</body>
+
+</html>
