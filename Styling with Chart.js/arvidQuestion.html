@@ -58,23 +58,28 @@
     <!-- Import ChartJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
     <script>
+
+    
     // setup 
     const data = {
-      labels: ['Twelve Problems', '2D Array', 'Hashmap', 'HW Quiz'],
+      //labels: ['Cytoplasmic Elements', '2D Array', 'Hashmap', 'HW Quiz'],
 
       datasets: [{
-            type: 'bar',
-            label: 'Bar Dataset',
-            data: [0, 0, 0, 0]
+            type: 'scatter',
+            label: 'Cytoplasmic Elements',
+            data: [
+              {x: 0, y: 10}
+            ],
+            pointRadius: 10
         }, 
         {
             type: 'scatter',
-            label: 'Syntax Difficulty',
-            data: [4.5, 3, 2, 1],
+            label: 'Genomic Imprinting',
+            data: [4.5],
         },
         {
             type: 'scatter',
-            label: 'Conceptual Difficulty',
+            label: 'Greenbeard Genes',
             data: [2, 3, 4, 4.5],
         },
     ],
@@ -87,9 +92,11 @@
             scales: {
                 x: {
                     //type: 'linear',
+                    min:0,
                 },
                 y: {
-                    max:5,
+                    max:15,
+                    min:0,
                     ticks: {
                         stepSize: 1,
                     }
