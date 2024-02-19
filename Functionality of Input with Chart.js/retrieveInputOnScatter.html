@@ -34,8 +34,7 @@
         }
 
         .chartBox {
-            width: 700vh;
-            margin: 10vh 5vw 10vh 5vw;
+            width: 100vh;
             padding: 5vw;
             border-radius: 20px;
             border: solid 3px rgba(54, 162, 235, 1);
@@ -50,6 +49,7 @@
         .row {
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
         }
 
         button {
@@ -81,7 +81,7 @@
             <h2>Enter your estimates for the following evolutionary processes: </h2>
 
             <div class="column">
-                <div class="row" id="buttonsDiv">
+                <div class="column" id="buttonsDiv">
 
                 </div>
 
@@ -97,7 +97,7 @@
 
     <!-- Import ChartJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-    
+
     <script>
         const mapOfEvolution = new Map();
         mapOfEvolution.set(0, 'transposable_elments')
@@ -179,19 +179,32 @@
             })
         }
 
-    
+        const font = {
+            size: 20,
+        }
         // Render chart inititally
         const myChart = new Chart(
             document.getElementById('myChart'), {
             data,
             options: {
                 scales: {
+                    aspectRatio: 0.5, 
+                    maintainAspectRatio: true,
                     x: {
-                        //type: 'linear',
+                        title: {
+                            display: true,
+                            text: 'Trait distortion',
+                            font: font
+                        },
                         min: 0,
                         max: 10,
                     },
                     y: {
+                        title: {
+                            display: true,
+                            text: 'Transmission distortion',
+                            font: font,
+                        },
                         max: 10,
                         min: 0,
                     }
@@ -206,7 +219,7 @@
                 },
 
                 // When Chart is clicked
-                onClick(e){chartOnClick(e)},
+                onClick(e) { chartOnClick(e) },
             }
         }
         );
@@ -240,17 +253,17 @@
 
         function checkCompletePlacements() {
             console.log('check complete placements')
-            
+
             // if all the positions are added then we want to add a submit button
             var boolPlacements = true;
             mapOfPlacement.forEach((values) => {
-                if(values == 0) {
+                if (values == 0) {
                     boolPlacements = false;
-                } 
+                }
             })
 
             console.log(boolPlacements);
-            if(boolPlacements) {
+            if (boolPlacements) {
                 document.getElementById('submit').removeAttribute("hidden")
             }
         }

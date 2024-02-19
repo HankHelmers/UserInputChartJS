@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Getting Started with Chart JS with www.chartjs3.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        .chartMenu {
+            width: 100vw;
+            height: 40px;
+            background: #1A1A1A;
+            color: rgba(54, 162, 235, 1);
+        }
+
+        .chartMenu p {
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .chartCard {
+            width: 100vw;
+            height: calc(100vh - 40px);
+            background: rgba(54, 162, 235, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chartBox {
+            width: 100vh;
+            padding: 5vw;
+            border-radius: 20px;
+            border: solid 3px rgba(54, 162, 235, 1);
+            background: white;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        button {
+            margin: 1vh;
+            padding: 1vh;
+            border: solid 3px rgb(136, 139, 141);
+            background-color: rgb(206, 206, 206)
+        }
+
+        .unselected {
+            background-color: rgb(206, 206, 206)
+        }
+
+        .selected {
+            background-color: rgb(166, 220, 215)
+        }
+
+        .added {
+            background: rgb(122, 185, 141)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chartCard">
+
+        <div class="chartBox">
+
+            <h2>Enter your estimates for the following evolutionary processes: </h2>
+
+            <div class="column">
+                <div class="row" id="buttonsDiv">
+
+                </div>
+
+                <canvas id="myChart"></canvas>
+
+                <button hidden id="submit" onclick="submit()">Submit response</button>
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
